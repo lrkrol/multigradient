@@ -1,15 +1,18 @@
 % map = multigradient(rgb, pts[, varargin])
 %
-%       Returns a custom colormap generated from the indicated colors
-%       anchored at the indicated points (color stops), with their relative
-%       positions intact, and gradients between them.
+%       Returns a custom colour map generated from the indicated colours
+%       anchored at optionally indicated points (colour stops), with their
+%       relative positions intact, and gradients between them.
 %
 % In:
 %       rgb - n-by-3 matrix of rgb color values
-%       pts - vector of length n indicating the relative positions of
-%             the color points in colorrgb 
 %
 % Optional:
+%       pts - vector of length n indicating the relative positions of
+%             the colour points in colorrgb. default: all colours are
+%             equally spaced
+%       
+% Optional (key-value pairs):
 %       interp - which color representation to use for interpolation 
 %                ('hsv' or 'rgb', default: 'rgb')
 %       length - the length of the colormap. default: length of the current
@@ -21,14 +24,14 @@
 % Usage example:
 %       A simple red-yellow-green colormap would be:
 %       >> rgb = [.9 0 0; .9 .9 0; 0 .8 0];
-%       >> pts = [1 2 3];
 %       >> figure; imagesc(sort(rand(100), 'descend')); colorbar;
-%       >> colormap(multigradient(rgb, pts));
+%       >> colormap(multigradient(rgb));
 %
 %       It is possible to e.g. change the location of the yellow point, by
 %       adjusting the range and/or relative values of the color stops:
 %       >> rgb = [.9 0 0; .9 .9 0; 0 .8 0];
 %       >> pts = [1 4 5];
+%       >> colormap(multigradient(rgb, 'pts', pts));
 %
 %       Similarly, the width of the yellow band can be changed by repeating
 %       the yellow color (i.e., making a red-yellow-yellow-green map):
@@ -60,26 +63,23 @@
 % You should have received a copy of the GNU General Public License
 % along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-function map = multigradient(rgb, pts, varargin)
+function map = multigradient(rgb, varargin)
 
 p = inputParser;
 
 addRequired(p, 'rgb', @(rgb) (isnumeric(rgb) && size(rgb,2) == 3));
-addRequired(p, 'pts', @(pts) (isnumeric(pts) && numel(pts) == size(rgb,1)));
-
+addOptional(p, 'pts', [], @isnumeric);
 addParameter(p, 'interp', 'rgb', @(interp) any(validatestring(interp,{'rgb', 'hsv'})));
 addParameter(p, 'length', [], @isnumeric);
 
-parse(p, rgb, pts, varargin{:});
-
+parse(p, rgb, varargin{:});
 rgb = p.Results.rgb;
 pts = p.Results.pts;
 interp = p.Results.interp;
 length = p.Results.length;
 
-if isempty(length)
-    length = size(get(gcf,'colormap'),1);
-end
+if isempty(pts), pts = 1:size(rgb,1); end
+if isempty(length), length = size(get(gcf,'colormap'),1); end
 
 pts = maptorange_local(pts, [min(pts), max(pts)], [1, length]);
 
@@ -93,7 +93,7 @@ end
 end
 
 
-function targetvalue = maptorange_local(sourcevalue, sourcerange, targetrange, varargin)
+function targetvalue = maptorange_local(sourcevalue, sourcerange, targetrange)
 
 % limited local version of maptorange;
 % see github.com/lrkrol/maptorange for full functionality
@@ -101,7 +101,7 @@ function targetvalue = maptorange_local(sourcevalue, sourcerange, targetrange, v
 if numel(sourcevalue) > 1
     % recursively calling this function
     for i = 1:length(sourcevalue)
-        sourcevalue(i) = maptorange_local(sourcevalue(i), sourcerange, targetrange, varargin{:});
+        sourcevalue(i) = maptorange_local(sourcevalue(i), sourcerange, targetrange);
         targetvalue = sourcevalue;
     end
 else
