@@ -7,7 +7,7 @@ In its most basic form, simply call the script using an n-by-3 matrix of RGB val
 * Interpolation in __RGB__ space. Simple linear interpolation of the given RGB values.
 * Interpolation in __HSV__ space. Linear interpolation of the values after conversion into HSV, for e.g. the rainbow colormap: `multigradient([1 0 0; 0 0 1], 'interp', 'hsv')`.
 * Isoluminant interpolation in __L*a*b*__ space. The L* value is equalised for all given colours before linear interpolation and conversion back to RGB.
-* Interpolation in Kenneth Moreland's __Msh__ space for divergent colour maps for scientific visualisation. A neutral unsatured middle point is automatically inserted if the two endpoint colours for the diverging map are sufficiently distinct. See [Moreland, K. (2009). Diverging color maps for scientific visualization. *In Proceedings of the 5th International Symposium on Visual Computing*. doi: 10.1007/978-3-642-10520-3_9](https://www.kennethmoreland.com/color-maps/ColorMapsExpanded.pdf)
+* Interpolation in Kenneth Moreland's __Msh__ space for divergent colour maps for scientific visualisation. A neutral unsatured middle point is automatically inserted if the two endpoint colours for the diverging map are sufficiently distinct. See [Moreland, K. (2009). Diverging color maps for scientific visualization. *In Proceedings of the 5th International Symposium on Visual Computing*. doi: 10.1007/978-3-642-10520-3_9](https://www.kennethmoreland.com/color-maps/ColorMapsExpanded.pdf).
 * __Control points__ allow the relative distances between the colours to be adjusted.
 * Many __presets__, including colour scales designed by [Kenneth Moreland](https://www.kennethmoreland.com) and [Cynthia Brewer](http://colorbrewer2.org), are included.
 
@@ -15,11 +15,13 @@ In its most basic form, simply call the script using an n-by-3 matrix of RGB val
 
 ## Sample usage
 
-`multigradient` itself returns a list of RGB values for colours. Starting with a figure, we can change its color scale by calling `colormap` with that list as argument, or directly  with `multigradient` inline.
+`multigradient` itself returns a list of RGB values for colours. Starting with a figure ...
 
 ```
 figure; imagesc(sort(rand(100), 'descend')); colorbar;`
 ```
+
+we can change its color scale by calling `colormap` with that list as argument, or directly  with `multigradient` inline.
 
 To create a simple black-red-yellow-white colormap, we would put those colours in that order as the first argument:
 
