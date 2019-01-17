@@ -21,7 +21,9 @@
 %                'hsv' - linear interpolation in HSV space
 %                'labiso' - linear interpolation in L*a*b* space after
 %                           first equalising all L* values by taking their
-%                           mean, resulting in an isoluminant colour map
+%                           mean, resulting in an isoluminant colour map.
+%                           note that conversion back to RGB may induce
+%                           colour clipping due to gamut differences.
 %                'mshdiv' - linear interpolation in Kenneth Moreland's Msh
 %                           space for diverging colour maps. mshdiv
 %                           requires exactly two input colours. when these
@@ -61,13 +63,13 @@
 %                       Copyright 2018, 2019 Laurens R Krol
 %                       lrkrol.com
 
-% 2019-01-17 v1.2.0 lrk
+% 2019-01-17 v1.5.0 lrk
 %   - Added L*a*b* isoluminant interpolation (labiso)
 %   - Added Msh divergent interpolation (mshdiv)
 %   - Added preset argument with some initial presets
 %   - Added reverse argument
 %   - Enabled middle control point for two-colour maps
-%   - Switched to semantic versioning; this is v1.2.0
+%   - Switched to semantic versioning; this is v1.5.0
 % 2018-07-14 First version
 
 % This program is free software: you can redistribute it and/or modify
