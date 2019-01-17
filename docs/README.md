@@ -45,4 +45,4 @@ Many presets are available. Kenneth Moreland suggests using the following diverg
 colormap(multigradient('preset', 'div.km.BuRd'));
 ```
 
-Look inside the script for other available presets.
+Control points can be applied to presets as well. See inside the script for more available presets.
