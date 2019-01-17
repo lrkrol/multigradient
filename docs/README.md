@@ -7,9 +7,9 @@ In its most basic form, simply call the script using an n-by-3 matrix of RGB val
 * Interpolation in _RGB_ space. Simple linear interpolation of the given RGB values.
 * Interpolation in _HSV_ space. Linear interpolation of the values after conversion into HSV, for e.g. the rainbow colormap: `multigradient([1 0 0; 0 0 1], 'interp', 'hsv')`.
 * Isoluminant interpolation in _L*a*b*_ space. The L* value is equalised for all given colours before linear interpolation and conversion back to RGB.
-* Interpolation in Kenneth Moreland's _Msh_ space for divergent colour maps for scientific visualisation. A neutral unsatured middle point is automatically inserted if the two endpoint colours for the diverging map are sufficiently distinct.
+* Interpolation in Kenneth Moreland's _Msh_ space for divergent colour maps for scientific visualisation. A neutral unsatured middle point is automatically inserted if the two endpoint colours for the diverging map are sufficiently distinct. See [Moreland, K. (2009). Diverging color maps for scientific visualization. *In Proceedings of the 5th International Symposium on Visual Computing*. doi: 10.1007/978-3-642-10520-3_9](https://doi.org/10.1007/978-3-642-10520-3_9)
 * _Control points_ allow the relative distances between the colours to be adjusted.
-* Many _presets_, including colour scales designed by Kenneth Moreland and Cynthia Brewer, are included.
+* Many _presets_, including colour scales designed by [Kenneth Moreland](https://kennethmoreland.com) and [Cynthia Brewer](https://colorbrewer.com), are included.
 
 ![Sample colour scales](./samples.png)
 
