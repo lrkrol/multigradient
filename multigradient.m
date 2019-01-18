@@ -89,6 +89,11 @@
 % You should have received a copy of the GNU General Public License
 % along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+% This product includes color specifications and designs developed by
+% Cynthia Brewer (http://colorbrewer.org/). Those specifications are
+% Copyright (c) 2002 Cynthia Brewer, Mark Harrower, and The Pennsylvania 
+% State University. Licensed under the Apache License, Version 2.0.
+
 function map = multigradient(rgb, varargin)
 
 p = inputParser;
