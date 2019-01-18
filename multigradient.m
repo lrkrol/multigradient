@@ -497,6 +497,7 @@ switch preset
         interp = 'rgb';
     case 'div.cb.BuRd.6' % 6-colour diverging BuRd, by Cynthia Brewer
         rgb = [178 24 43; 239 138 98; 253 219 199; 209 229 240; 103 169 207; 33 102 172] / 255;
+        rgb = flipud(rgb);
         interp = 'rgb';
     case 'div.cb.BuRd.7' % 7-colour diverging BuRd, by Cynthia Brewer
         rgb = [178 24 43; 239 138 98; 253 219 199; 247 247 247; 209 229 240; 103 169 207; 33 102 172] / 255;
