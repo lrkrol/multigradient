@@ -12,15 +12,19 @@ In its most basic form, simply call the script using an n-by-3 matrix of RGB val
 * Many __presets__, including colour scales designed by [Kenneth Moreland](https://www.kennethmoreland.com) and [Cynthia Brewer](http://colorbrewer2.org), are included.
 * Colour scales can easily be __reversed__. 
 
+![Sample colour scales](./samples.png)
+
 
 ## Sample usage
-
-![Sample colour scales](./samples.png)
 
 Starting with a figure ...
 
 ```
-figure; imagesc(sort(rand(100), 'descend')); colorbar;
+f = figure;
+subplot(1,2,1); imagesc(sort(rand(50), 'descend')); colorbar;
+subplot(1,2,2); surfc(peaks(250), 'EdgeColor', 'none'); colorbar;
+axis vis3d; caxis([-max(abs(caxis)), max(abs(caxis))]);
+set(f, 'Position', get(f, 'Position') .* [1 1 2 1]);
 ```
 
 ... we can change its color scale by calling `colormap` with a list of RGB colour values. `multigradient` returns such a list. We can thus call `colormap` with `multigradient` as argument inline.
