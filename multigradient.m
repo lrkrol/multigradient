@@ -65,7 +65,7 @@
 
 % 2019-01-18 v1.5.3 lrk
 %   - Updated preset naming convention
-%   - Reversed div.cm colours to maintain cold -> warm consistency
+%   - Reversed div.cb colours to maintain cold -> warm consistency
 %   - Code clean-up
 % 2019-01-17 v1.5.0 lrk
 %   - Added L*a*b* isoluminant interpolation (labiso)
@@ -272,7 +272,7 @@ function [rgb, interp] = getpreset(preset)
 %          Yl = Yellow
 % variation: optional descriptor of the colour map, to be used to
 %            distinguish between two or more colour maps that would
-%            otherwise have the same name. for example, the div.cm maps
+%            otherwise have the same name. for example, the div.cb maps
 %            come in different variations, characterised by the different
 %            number of colours used.
 

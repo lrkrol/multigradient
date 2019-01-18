@@ -6,9 +6,9 @@ In its most basic form, simply call the script using an n-by-3 matrix of RGB val
 
 * Interpolation in __RGB__ space. Simple linear interpolation of the given RGB values.
 * Interpolation in __HSV__ space. Linear interpolation of the values after conversion into HSV, for e.g. the rainbow colormap: `multigradient([1 0 0; 0 0 1], 'interp', 'hsv')`.
-* __Isoluminant__ interpolation in __L\*a\*b\*__ (Lab) space. The L* value is equalised for all given colours before linear interpolation and conversion back to RGB. Note that some colour clipping may occur due to the gamut differences.
-* Interpolation in Kenneth Moreland's __Msh__ space for divergent colour maps for scientific visualisation. A neutral unsatured middle point is automatically inserted if the two endpoint colours for the diverging map are sufficiently distinct. See [Moreland, K. (2009). Diverging color maps for scientific visualization. In *Proceedings of the 5th International Symposium on Visual Computing*. doi: 10.1007/978-3-642-10520-3_9](https://www.kennethmoreland.com/color-maps/ColorMapsExpanded.pdf).
-* __Control points__ allow the relative distances between the colours to be adjusted.
+* __Isoluminant__ interpolation in __L\*a\*b\*__ (Lab) space. The L* value is equalised for all given colours before linear interpolation and conversion back to RGB. Note that some colour clipping may occur due to gamut differences.
+* Interpolation in Kenneth Moreland's __Msh__ space for __divergent colour maps for scientific visualisation__. A neutral unsatured middle point is automatically inserted if the two endpoint colours for the diverging map are sufficiently distinct. See [Moreland, K. (2009). Diverging color maps for scientific visualization. In *Proceedings of the 5th International Symposium on Visual Computing*. doi: 10.1007/978-3-642-10520-3_9](https://www.kennethmoreland.com/color-maps/ColorMapsExpanded.pdf).
+* __Control points__ allow the relative positions of, and distances between the colours to be adjusted.
 * Many __presets__, including colour scales designed by [Kenneth Moreland](https://www.kennethmoreland.com) and [Cynthia Brewer](http://colorbrewer2.org), are included.
 * Colour scales can easily be __reversed__. 
 
@@ -27,7 +27,7 @@ axis vis3d; caxis([-max(abs(caxis)), max(abs(caxis))]);
 set(f, 'Position', get(f, 'Position') .* [1 1 2 1]);
 ```
 
-... we can change its color scale by calling `colormap` with a list of RGB colour values. `multigradient` returns such a list. We can thus call `colormap` with `multigradient` as argument inline.
+... we can change its color scale by calling `colormap` with an n-by-3 matrix of RGB colour values. `multigradient` returns such a list. We can thus call `colormap` with `multigradient` as argument inline.
 
 To create a simple black-red-yellow-white colormap, we would put those four colours in that order as the first argument to `multigradient`:
 
@@ -42,6 +42,8 @@ It is possible to change the relative location of the colours by adjusting the r
 pts = [1 5 6 7];
 colormap(multigradient(rgb, pts));
 ```
+
+The relative positioning of the `pts` numbers on the number line reflect where the colours will end up in the colour map. The actual numbers used are irrelevant.
 
 
 ## Presets
@@ -69,8 +71,8 @@ The naming convention is as follows: `type.source.colours.variation`, where:
   * `Tq` = Turquoise
   * `Wh` = White
   * `Yl` = Yellow
-* `variation` is an optional descriptor of the colour map, to be used to distinguish between two or more colour maps that would otherwise have the same name. For example, the `div.cm` maps come in different variations, characterised by the different number of colours used, and `div.GnRd.iso` is a generic green-red colour map, but of an isoluminant variation.
+* `variation` is an optional descriptor of the colour map, to be used to distinguish between two or more colour maps that would otherwise have the same name. For example, the `div.cb` maps come in different variations, characterised by the different number of colours used, and `div.GnRd.iso` is a generic green-red colour map, but of an isoluminant variation.
 
-Control points can be applied to presets as well. See inside the script for more available presets.
+Control points can be applied to presets as well. See inside the script for all available presets.
 
 
