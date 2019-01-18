@@ -6,7 +6,7 @@ In its most basic form, simply call the script using an n-by-3 matrix of RGB val
 
 * Interpolation in __RGB__ space. Simple linear interpolation of the given RGB values.
 * Interpolation in __HSV__ space. Linear interpolation of the values after conversion into HSV, for e.g. the rainbow colormap: `multigradient([1 0 0; 0 0 1], 'interp', 'hsv')`.
-* Isoluminant interpolation in __L\*a\*b\*__ space. The L* value is equalised for all given colours before linear interpolation and conversion back to RGB. Note that some colour clipping may occur due to the gamut differences.
+* __Isoluminant__ interpolation in __L\*a\*b\*__ (Lab) space. The L* value is equalised for all given colours before linear interpolation and conversion back to RGB. Note that some colour clipping may occur due to the gamut differences.
 * Interpolation in Kenneth Moreland's __Msh__ space for divergent colour maps for scientific visualisation. A neutral unsatured middle point is automatically inserted if the two endpoint colours for the diverging map are sufficiently distinct. See [Moreland, K. (2009). Diverging color maps for scientific visualization. In *Proceedings of the 5th International Symposium on Visual Computing*. doi: 10.1007/978-3-642-10520-3_9](https://www.kennethmoreland.com/color-maps/ColorMapsExpanded.pdf).
 * __Control points__ allow the relative distances between the colours to be adjusted.
 * Many __presets__, including colour scales designed by [Kenneth Moreland](https://www.kennethmoreland.com) and [Cynthia Brewer](http://colorbrewer2.org), are included.
@@ -39,10 +39,34 @@ pts = [1 5 6 7];
 colormap(multigradient(rgb, pts));
 ```
 
-Many presets are available. Kenneth Moreland suggests using the following diverging colour map for scientific visualisation:
+
+## Presets
+
+A number of presets are available. For example, Kenneth Moreland suggests using the following diverging colour map for scientific visualisation:
 
 ```
 colormap(multigradient('preset', 'div.km.BuRd'));
 ```
 
+The naming convention is as follows: `type.source.colours.variation`, where: 
+* `type` is either `seq` (sequential) or `div` (diverging); this script is not meant for qualitative colour maps.
+* `source`, if applicable, signifies the source of the colour map, e.g. a person's initials or an organisation's abbreviation. This must be blank if no specific source can be identified.
+* `colours` describe the colours used in the colour map. `BuRd` for example indicates a colour map where blue is mapped to low values, and red to high values. Use the following abbreviations:
+  * `Bk` = Black
+  * `Br` = Brown
+  * `Bu` = Blue
+  * `Gn` = Green
+  * `Gy` = Grey
+  * `Or` = Orange
+  * `Pi` = Pink
+  * `Pu` = Purple
+  * `Rd` = Red
+  * `Tn` = Tan
+  * `Tq` = Turquoise
+  * `Wh` = White
+  * `Yl` = Yellow
+* `variation` is an optional descriptor of the colour map, to be used to distinguish between two or more colour maps that would otherwise have the same name. For example, the `div.cm` maps come in different variations, characterised by the different number of colours used, and `div.GnRd.iso` is a generic green-red colour map, but of an isoluminant variation.
+
 Control points can be applied to presets as well. See inside the script for more available presets.
+
+
