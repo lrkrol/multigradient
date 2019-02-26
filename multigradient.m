@@ -63,6 +63,8 @@
 %                       Copyright 2018, 2019 Laurens R Krol
 %                       lrkrol.com
 
+% 2019-02-07 v1.5.4 lrk
+%   - Added preset: div.RdYlGn
 % 2019-01-18 v1.5.3 lrk
 %   - Updated preset naming convention
 %   - Reversed div.cb colours to maintain cold -> warm consistency
@@ -287,6 +289,9 @@ switch preset
         interp = 'rgb';
     case 'div.GnYlRd' % green-yellow-red RGB
         rgb = [0 .8 0; .9 .9 0; .9 0 0];
+        interp = 'rgb';
+    case 'div.RdYlGn' % red-yellow-green RGB
+        rgb = [.9 0 0; .9 .9 0; 0 .8 0];
         interp = 'rgb';
         
     case 'div.GnRd.iso' % isoluminant green-red
