@@ -63,6 +63,8 @@
 %                       Copyright 2018, 2019 Laurens R Krol
 %                       lrkrol.com
 
+% 2020-07-14 v1.5.5 lrk
+%   - Fixed typo in preset seq.cb.YlGnBu name
 % 2019-02-07 v1.5.4 lrk
 %   - Added preset: div.RdYlGn
 % 2019-01-18 v1.5.3 lrk
@@ -329,13 +331,13 @@ switch preset
         rgb = [255 255 229; 247 252 185; 217 240 163; 173 221 142; 120 198 121; 65 171 93; 35 132 67; 0 104 55; 0 69 41] / 255;
         interp = 'rgb';
         
-    case 'seq.cb.YlGn.Bu3' % 3-colour sequential YlGnBu, by Cynthia Brewer
+    case 'seq.cb.YlGnBu.3' % 3-colour sequential YlGnBu, by Cynthia Brewer
         rgb = [237 248 177; 127 205 187; 44 127 184] / 255;
         interp = 'rgb';
-    case 'seq.cb.YlGn.Bu6' % 6-colour sequential YlGnBu, by Cynthia Brewer
+    case 'seq.cb.YlGnBu.6' % 6-colour sequential YlGnBu, by Cynthia Brewer
         rgb = [255 255 204; 199 233 180; 127 205 187; 65 182 196; 44 127 184; 37 52 148] / 255;
         interp = 'rgb';
-    case 'seq.cb.YlGn.Bu9' % 9-colour sequential YlGnBu, by Cynthia Brewer
+    case 'seq.cb.YlGnBu.9' % 9-colour sequential YlGnBu, by Cynthia Brewer
         rgb = [255 255 217; 237 248 177; 199 233 180; 127 205 187; 65 182 196; 29 145 192; 34 94 168; 37 52 148; 8 29 88] / 255;
         interp = 'rgb';
         
