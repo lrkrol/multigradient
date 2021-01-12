@@ -63,6 +63,8 @@
 %                       Copyright 2018, 2019 Laurens R Krol
 %                       lrkrol.com
 
+% 2021-01-12 v1.5.6 lrk
+%   - No changes to this file, but new version on File Exchange
 % 2020-07-14 v1.5.5 lrk
 %   - Fixed typo in preset seq.cb.YlGnBu name
 % 2019-02-07 v1.5.4 lrk
