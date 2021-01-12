@@ -14,7 +14,7 @@ gradients = { ...
 
 f = figure;
 for r = 1:numel(gradients)
-    subplot(rows,1,r);
+    subplot(numel(gradients),1,r);
     imagesc(1:1000);
     gradient = gradients{r};
     colormap(gca, eval(gradient{2}));
